@@ -1,0 +1,16 @@
+html, body, .viewport {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', 'PT Serif', serif;
+    color: white;
+    background-color: #272C34;
+    /* background-color: #272B30; */
+    /* background hover: #2D3136; */
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

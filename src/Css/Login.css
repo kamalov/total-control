@@ -1,0 +1,25 @@
+.login {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login .title {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+
+    font-size: 128pt;
+    font-weight: 100;
+    letter-spacing: 0.3rem;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+}
+
+.login .title:hover .title-part {
+    padding: 0 3rem;
+    background: #2D323A;
+}
