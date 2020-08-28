@@ -4,7 +4,7 @@ export const Executors = [
     'Сидоров',
     'Миша',
     'Маша',
-]
+];
 
 export const Project_kinds = [
     'ПЗЗ',
@@ -34,7 +34,7 @@ export const Districts = [
     'Гафурийский',
     'Ермекеевский',
     'Давлекановский',
-    'Дуванский район',
+    'Дуванский',
     'Дюртюлинский',
     'Зианчуринский',
     'Зилаирский',
@@ -64,4 +64,30 @@ export const Districts = [
     'Чишминский',
     'Шаранский',
     'Янаульский'
+];
+
+export enum FieldKind {
+    String = "String",
+    Number = "Number",
+    Boolean = "Boolean",
+    Date = "Date"
+}
+
+export const FieldKindLabels = [
+    {
+        kind: FieldKind.String,
+        label: 'Строка'
+    },
+    {
+        kind: FieldKind.Number,
+        label: 'Число'
+    },
+    {
+        kind: FieldKind.Boolean,
+        label: 'Да/Нет'
+    },
+    {
+        kind: FieldKind.Date,
+        label: 'Дата'
+    },
 ];
