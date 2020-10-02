@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as React from 'react';
 import { Button, Form,  } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
@@ -13,10 +14,12 @@ export function Login() {
                 onClick={() => history.push('/classes')}
             >
                 <div className="title-part">Учёт</div>
-                <div>&</div>
+                <div className="title-and">&</div>
                 <div className="title-part">Контроль</div>
             </div>
         </div>
     );
 }
+
+
 

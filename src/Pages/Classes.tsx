@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as React from 'react';
 import 'Css/Classes.css';
 import { find, remove } from 'lodash';
@@ -5,7 +6,9 @@ import { Navbar, Nav, Container, Form, Col, Row, Button } from 'react-bootstrap'
 import { useHistory, useParams } from "react-router-dom";
 import {getClasses, guid, saveClasses} from 'utils';
 import {useReducer, useState} from 'react';
-import {FieldKind, FieldKindLabels} from 'data';
+import {EFieldKind, FieldKindLabels} from 'data';
+import {Vars} from 'vars';
+import {ObjectModal} from 'Pages/ObjectModal';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -21,6 +24,23 @@ export function Classes() {
         history.push('/classes/' + classId);
     }
 
+    function handleGotoObject(classId) {
+        Vars.classId = classId;
+        Vars.objectModalVisible = true;
+        forceUpdate();
+        //history.push(`/object/${classId}`);
+    }
+
+    function handleGotoObjects(classId) {
+        history.push(`/objects/${classId}`);
+    }
+
+    function handleCloseObjectModal() {
+        Vars.classId = '';
+        Vars.objectModalVisible = false;
+        forceUpdate();
+    }
+
     function handleAddNewClass() {
         const classes = getClasses();
         const cls = {
@@ -30,7 +50,7 @@ export function Classes() {
                 {
                     id: guid(),
                     name: '',
-                    kind: FieldKind.String
+                    kind: EFieldKind.String
                 }
             ]
         };
@@ -47,7 +67,7 @@ export function Classes() {
             {
                 id: guid(),
                 name: '',
-                kind: FieldKind.String
+                kind: EFieldKind.String
             }
         );
         saveClasses(classes);
@@ -89,7 +109,6 @@ export function Classes() {
         saveClasses(classes);
         forceUpdate();
     }
-
 
     /// render
 
@@ -154,6 +173,21 @@ export function Classes() {
                                 onChange={(event) => handleClassNameChange(event, cls.id)}
                             />
                         </Col>
+                        <Col xs={6}>
+                            <Button
+                                variant="warning"
+                                onClick={() => handleGotoObject(cls.id)}
+                            >
+                                Объект
+                            </Button>
+
+                            <Button
+                                variant="warning"
+                                onClick={() => handleGotoObjects(cls.id)}
+                            >
+                                Таблица
+                            </Button>
+                        </Col>
                     </Form.Row>
                 </Form.Group>
                 <br />
@@ -177,7 +211,7 @@ export function Classes() {
                     <Form.Row>
                         <Col xs={6}>
                             <Form.Control
-                                placeholder="Имя свойства"
+                                placeholder="Имя поля"
                                 value={field.name}
                                 onChange={(event) => handleFieldNameChange(event, cls.id, field.id)}
                             />
@@ -203,28 +237,35 @@ export function Classes() {
     }
 
     return (
-        <div className="page">
-            <div className="page-menu" style={{ height: menuHeight }}>
-                <Navbar variant="dark" bg="dark" expand="sm">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="/">Login</Nav.Link>
-                        <Nav.Link href="/main">Main</Nav.Link>
-                        <Nav.Link href={'/classes'}>Classes</Nav.Link>
-                    </Nav>
-                </Navbar>
-            </div>
+        <>
+            {
+                Vars.objectModalVisible &&
+                <ObjectModal onClose={handleCloseObjectModal} />
+            }
 
-            <div className="page-body" style={{ top: menuHeight }}>
-                <div className="classes">
-                    <div className="class-list">
-                        {renderClassList()}
-                    </div>
+           <div className="page">
+                <div className="page-menu" style={{ height: menuHeight }}>
+                    <Navbar variant="dark" bg="dark" expand="sm">
+                        <Nav className="mr-auto">
+                            <Nav.Link href="/">Login</Nav.Link>
+                            <Nav.Link href="/main">Main</Nav.Link>
+                            <Nav.Link href={'/classes'}>Classes</Nav.Link>
+                        </Nav>
+                    </Navbar>
+                </div>
 
-                    <div className="class-body">
-                        {renderClassBody()}
+                <div className="page-body" style={{ top: menuHeight }}>
+                    <div className="classes">
+                        <div className="class-list">
+                            {renderClassList()}
+                        </div>
+
+                        <div className="class-body">
+                            {renderClassBody()}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }

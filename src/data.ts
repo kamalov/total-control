@@ -66,28 +66,33 @@ export const Districts = [
     'Янаульский'
 ];
 
-export enum FieldKind {
+export enum EFieldKind {
     String = "String",
     Number = "Number",
     Boolean = "Boolean",
-    Date = "Date"
+    Date = "Date",
+    Ref = "Ref",
 }
 
 export const FieldKindLabels = [
     {
-        kind: FieldKind.String,
+        kind: EFieldKind.String,
         label: 'Строка'
     },
     {
-        kind: FieldKind.Number,
+        kind: EFieldKind.Number,
         label: 'Число'
     },
     {
-        kind: FieldKind.Boolean,
+        kind: EFieldKind.Boolean,
         label: 'Да/Нет'
     },
     {
-        kind: FieldKind.Date,
+        kind: EFieldKind.Date,
         label: 'Дата'
+    },
+    {
+        kind: EFieldKind.Ref,
+        label: 'Ссылка'
     },
 ];

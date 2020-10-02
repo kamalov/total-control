@@ -1,0 +1,45 @@
+.object {
+    /*position: relative;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*background: green;*/
+}
+
+.object .object-props {
+    /*display: inline-block;*/
+    /*width: 25%;*/
+    /*height: 100%;*/
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    /*background: red;*/
+
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*padding: 24px 32px;*/
+}
+
+.object .object-body {
+    /*display: inline-block;*/
+    /*width: 75%;*/
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*width: 75%;*/
+    /*overflow-y: auto;*/
+    /*padding: 32px;*/
+}
+
+/*.object .class-list .cls {*/
+/*    display: inline-block;*/
+/*    cursor: pointer;*/
+/*    padding: 4px 12px;*/
+/*    margin-bottom: 16px;*/
+/*}*/
+
+/*.object .class-list .cls:hover {*/
+/*    background: rgba(255, 255, 255, 0.2);*/
+/*}*/
+
+

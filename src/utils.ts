@@ -1,3 +1,7 @@
+/* eslint-disable */
+
+import {EFieldKind} from 'data';
+
 export function getClasses() {
     const classesStr = localStorage.getItem('classes');
     return classesStr ? JSON.parse(classesStr) : [];
@@ -5,6 +9,15 @@ export function getClasses() {
 
 export function saveClasses(classes) {
     localStorage.setItem('classes', JSON.stringify(classes));
+}
+
+export function getObjects(classId) {
+    const classesStr = localStorage.getItem('objects_' + classId);
+    return classesStr ? JSON.parse(classesStr) : [];
+}
+
+export function saveObjects(classId, objects) {
+    localStorage.setItem('objects_' + classId, JSON.stringify(objects));
 }
 
 export function guid() {
